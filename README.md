@@ -106,8 +106,8 @@ void followLeftL(int s[5]) {
     // Turn LEFT (counterclockwise)
     analogWrite(EN1, sharpTurnSpeed);
     analogWrite(EN2, sharpTurnSpeed);
-    digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH);  // Left reverse
-    digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);  // Right forward
+    digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);  // Left reverse
+    digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH);  // Right forward
 
     // Wait until center sensor realigns
     unsigned long start = millis();
@@ -128,8 +128,8 @@ void followRightL(int s[5]) {
     // Turn RIGHT (clockwise)
     analogWrite(EN1, sharpTurnSpeed);
     analogWrite(EN2, sharpTurnSpeed);
-    digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);  // Left forward
-    digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH);  // Right reverse
+    digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH);  // Left forward
+    digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);  // Right reverse
 
     // Wait until center sensor realigns
     unsigned long start = millis();
@@ -186,10 +186,10 @@ void searchLine() {
 #define EN2 11
 
 // ==== Speed Settings ====
-const int baseSpeed = 90;
-const int sharpTurnSpeed = 80;
-const int curveSpeed = 70;
-const int reverseSpeed = 80;
+const int baseSpeed = 90+40;
+const int sharpTurnSpeed = 80+40;
+const int curveSpeed = 70+40;
+const int reverseSpeed = 80+40;
 
 // ==== State Machine ====
 enum TrackState { NORMAL, L_TURN_LEFT, L_TURN_RIGHT, T_SECTION, CURVE, LOST, FINISH };
@@ -294,8 +294,8 @@ void followLeftL(int s[5]) {
     
     analogWrite(EN1, sharpTurnSpeed);
     analogWrite(EN2, sharpTurnSpeed);
-    digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH);  // Left reverse
-    digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);  // Right forward
+    digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);  // Left reverse
+    digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH);  // Right forward
 
     unsigned long start = millis();
     while (millis() - start < 1000) {
@@ -314,8 +314,8 @@ void followRightL(int s[5]) {
     
     analogWrite(EN1, sharpTurnSpeed);
     analogWrite(EN2, sharpTurnSpeed);
-    digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);  // Left forward
-    digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH);  // Right reverse
+    digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH);  // Left forward
+    digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);  // Right reverse
 
     unsigned long start = millis();
     while (millis() - start < 1000) {
